@@ -8,10 +8,10 @@ from pe_tools import parse_pe, IMAGE_DIRECTORY_ENTRY_RESOURCE
 from pe_tools.rsrc import parse_pe_resources, pe_resources_prepack, parse_prelink_resources, KnownResourceTypes
 from pe_tools.version_info import parse_version_info, VersionInfo
 
-ver_str = "0.1.0"
-windows_ver = "0, 1, 0, 0"
-file_description = "Leading Brand DELTARUNE-type Software"
-is_standalone = False # Set this to true if you are building Kristal as a standalone fangame
+ver_str = "0.0.1"
+windows_ver = "0, 0, 1, 0"
+file_description = ""
+is_standalone = True # Set this to true if you are building Kristal as a standalone fangame
 
 # Contains code from https://github.com/avast/pe_tools/blob/master/pe_tools/peresed.py
 
@@ -89,7 +89,7 @@ def setInfo(key, value):
 
 build_path = "build"
 output_path = "output"
-kristal_path = "Kristal"
+kristal_path = "."
 
 try:
     os.makedirs(os.path.join(build_path, "executable"))
@@ -155,7 +155,11 @@ try:
             if os.path.isfile(os.path.join(kristal_path, file)):
                 shutil.copy(os.path.join(kristal_path, file), os.path.join(build_path, "kristal"))
             elif os.path.isdir(os.path.join(kristal_path, file)):
-                shutil.copytree(os.path.join(kristal_path, file), os.path.join(build_path, "kristal", file))
+                shutil.copytree(
+                os.path.join(kristal_path, file),
+                os.path.join(build_path, "kristal", file),
+                ignore=shutil.ignore_patterns(".git", ".github")
+            )
 except FileNotFoundError:
     fatal("Error: \"kristal\" folder missing! Please place a clean copy of Kristal's source code next to this script in a folder titled \"kristal\".")
 
