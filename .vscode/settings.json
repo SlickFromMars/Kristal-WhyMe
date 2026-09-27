@@ -1,0 +1,33 @@
+{
+    "Lua.diagnostics.disable": [
+        "inject-field",
+        "deprecated",
+        "undefined-doc-param"
+    ],
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/.github": true,
+        "**/build": true,
+        "**/output": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+
+    "search.exclude": {
+        "**/.git": true,
+        "**/.github": true,
+        "**/build": true,
+        "**/output": true,
+        "**/__pycache__": true
+    },
+
+    "files.watcherExclude": {
+        "**/.git/**": true,
+        "**/build/**": true,
+        "**/output/**": true,
+        "**/__pycache__/**": true
+    },
+
+    "editor.minimap.enabled": false
+}

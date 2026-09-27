@@ -228,10 +228,10 @@ print("Patching in custom information...")
 setInfo("FileVersion", windows_ver)
 setInfo("ProductVersion", windows_ver)
 setInfo("FileDescription", file_description)
-setInfo("InternalName", "Kristal")
-setInfo("LegalCopyright", "Copyright © 2026 Kristal Team")
-setInfo("OriginalFilename", "kristal.exe")
-setInfo("ProductName", "Kristal")
+setInfo("InternalName", "DELTARUNE - Why Me?")
+setInfo("LegalCopyright", "")
+setInfo("OriginalFilename", "WhyMe.exe")
+setInfo("ProductName", "Why Me?")
 
 
 prepacked = pe_resources_prepack(resources)
@@ -240,7 +240,7 @@ pe.set_directory(IMAGE_DIRECTORY_ENTRY_RESOURCE, prepacked.pack(addr))
 
 print("Writing new file...")
 
-with open(os.path.join(build_path, "executable", "kristal.exe"), 'wb') as fout:
+with open(os.path.join(build_path, "executable", "WhyMe.exe"), 'wb') as fout:
     grope.dump(pe.to_blob(), fout)
 
 
@@ -274,26 +274,19 @@ for file in os.listdir(os.path.join(kristal_path, "lib")):
     shutil.copy(os.path.join(kristal_path, "lib", file), os.path.join(build_path, "lovepkg"))
 
 print("Zipping Kristal packages...")
-shutil.make_archive(os.path.join(output_path, "kristal-"+ver_str+"-love"), 'zip', os.path.join(build_path, "lovepkg"))
-shutil.make_archive(os.path.join(output_path, "kristal-"+ver_str+"-win"), 'zip', os.path.join(build_path, "executable"))
+shutil.make_archive(
+    os.path.join(output_path, "WhyMe-"+ver_str+"-love"),
+    'zip',
+    os.path.join(build_path, "lovepkg")
+)
 
-print("Packaging example project...")
-
-try:
-    os.makedirs(os.path.join(build_path, "example"))
-except FileExistsError:
-    pass
-
-shutil.copytree(os.path.join(kristal_path, "mods", "example", "assets"), os.path.join(build_path, "example", "assets"))
-shutil.copytree(os.path.join(kristal_path, "mods", "example", "scripts"), os.path.join(build_path, "example", "scripts"))
-shutil.copy(os.path.join(kristal_path, "mods", "example", "mod.json"), os.path.join(build_path, "example", "mod.json"))
-shutil.copy(os.path.join(kristal_path, "mods", "example", "mod.lua"), os.path.join(build_path, "example", "mod.lua"))
-shutil.copy(os.path.join(kristal_path, "mods", "example", "example.tiled-project"), os.path.join(build_path, "example", "example.tiled-project"))
-
-shutil.make_archive(os.path.join(output_path, "example-project"), 'zip', os.path.join(build_path, "example"))
+shutil.make_archive(
+    os.path.join(output_path, "WhyMe-"+ver_str+"-win"),
+    'zip',
+    os.path.join(build_path, "executable")
+)
 
 print("Done!")
 print("Generated files:")
-print("> kristal-"+ver_str+"-love.zip")
-print("> kristal-"+ver_str+"-win.zip")
-print("> example-project.zip")
+print("> WhyMe-"+ver_str+"-love.zip")
+print("> WhyMe-"+ver_str+"-win.zip")

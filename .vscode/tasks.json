@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Why Me: Run",
+            "type": "shell",
+            "command": "${workspaceFolder}\\test-why-me.bat",
+            "problemMatcher": []
+        },
+        {
+            "label": "Why Me: Build Release",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build-why-me.bat",
+            "problemMatcher": []
+        }
+    ]
+}

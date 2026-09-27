@@ -18,6 +18,14 @@ function MainMenuCredits:init(menu)
 
     self.pages = {
         {
+            "Why Me?",
+            {
+                {"Lead Developers", COLORS.silver },
+                "Siameses",
+                "SlickFromMars"
+            }
+        },
+        {
             "Kristal Engine",
             {
                 { "Lead Developers", COLORS.silver },
